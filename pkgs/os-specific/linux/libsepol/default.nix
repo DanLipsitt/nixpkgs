@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchurl, flex }:
+{ lib, stdenv, fetchurl, flex, coreutils-prefixed }:
 
 stdenv.mkDerivation rec {
   pname = "libsepol";
@@ -17,7 +17,7 @@ stdenv.mkDerivation rec {
     sed -i $'/^\t.*LIBSO/d' src/Makefile
   '';
 
-  nativeBuildInputs = [ flex ];
+  nativeBuildInputs = [ flex coreutils-prefixed ];
 
   makeFlags = [
     "PREFIX=$(out)"
